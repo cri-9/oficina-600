@@ -1,0 +1,7 @@
+{
+    "require": {
+        "cboden/ratchet": "^0.4.4",
+        "textalk/websocket": "^1.5",
+        "predis/predis": "^3.0"
+    }
+}

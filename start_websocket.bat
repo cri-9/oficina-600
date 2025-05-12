@@ -1,0 +1,3 @@
+@echo off
+echo Iniciando servidor WebSocket...
+php backend/websocket_server.php 

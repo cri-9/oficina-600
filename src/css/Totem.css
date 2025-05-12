@@ -1,0 +1,68 @@
+/* Oculta toda la UI menos el ticket al imprimir */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+
+  body * {
+    visibility: hidden !important;
+  }
+  
+  #ticket, #ticket * {
+    visibility: visible !important;
+  }
+  
+  #ticket {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 15%;
+    margin: auto;
+    width: 350px;
+    z-index: 99999;
+  }
+}
+
+/* Diseño del ticket/tarjeta */
+.ticket-impresion {
+  padding: 28px 20px 20px 20px;
+  margin: 0 auto;
+  max-width: 350px;
+  background: linear-gradient(120deg, #1976d2 80%, #fff 100%);
+  border-radius: 20px;
+  box-shadow: 0 4px 20px 0 #1976d280;
+  text-align: center;
+  font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+}
+
+.ticket-impresion .logo-ticket {
+  display: block;
+  margin: 0 auto 10px auto;
+  height: 40px;
+}
+
+.ticket-impresion h1,
+.ticket-impresion .turno-numero {
+  font-size: 4.2rem;
+  font-weight: 800;
+  letter-spacing: 0.20em;
+  color: #fff;
+  margin: 12px 0 10px 0;
+  text-shadow: 1px 2px 8px #0004;
+}
+
+.ticket-impresion .tipo-atencion {
+  color: #ffe727;
+  font-size: 1.4rem;
+  font-weight: bold;
+  margin-bottom: 4px;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.ticket-impresion .ticket-fecha {
+  font-size: 1.15rem;
+  color: #1976d2;
+  font-weight: 600;
+  margin-top: 6px;
+}
