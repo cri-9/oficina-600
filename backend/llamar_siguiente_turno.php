@@ -142,7 +142,7 @@ $idModulo = intval($data['id_modulo']);
     } catch (\Predis\Connection\ConnectionException $e) {
         error_log("[LLAMAR_SIGUIENTE] Error al conectar a Redis: " . $e->getMessage());
     }
-
+    // Verificar si la conexión está activa
     $wsData = [
         "type" => "turno_llamado",
         "numero_turno" => $turno['numero_turno'],
@@ -150,7 +150,10 @@ $idModulo = intval($data['id_modulo']);
         "modulo" => $modulo['nombre'] ?? $turno['modulo_nombre'],
         "id_modulo" => $idModulo
     ];
-    $redis->rpush('turnos', json_encode(['type' => 'test_message', 'data' => 'hello from php']));
+    // Publicar el mensaje en Redis
+    $redis->publish('turnos', json_encode($wsData));
+    // También puedes usar rpush si necesitas almacenar el mensaje en una lista
+    //$redis->rpush('turnos', json_encode(['type' => 'test_message', 'data' => 'hello from php']));
     error_log("[LLAMAR_SIGUIENTE] Publicado mensaje de prueba.");
 
     error_log("📢📢📢 [LLAMAR_SIGUIENTE] Datos publicados a Redis: " . json_encode($wsData));
